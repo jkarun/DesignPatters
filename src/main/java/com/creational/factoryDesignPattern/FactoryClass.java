@@ -1,4 +1,4 @@
-package com.designpattern.factoryDesignPattern;
+package com.creational.factoryDesignPattern;
 
 public class FactoryClass {
 

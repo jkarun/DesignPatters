@@ -1,4 +1,4 @@
-package com.designpattern.PrototypeDesignPattern;
+package com.creational.PrototypeDesignPattern;
 
 import java.util.Hashtable;
 

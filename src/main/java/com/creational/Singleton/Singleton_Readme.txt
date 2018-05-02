@@ -1,19 +1,19 @@
-Singleton 
+Singleton : 
 	Singleton pattern is a design pattern which restricts a class to instantiate its multiple objects and ensures that only one instance of the class exists in the java virtual machine.
 	
 Initialization Types of Singleton
-	1. Early initialization	
+	1. Early initialization	:
 		In this method, class is initialized whether it is to be used or not.
-	2. Lazy initialization	
+	2. Lazy initialization	:
 		In this method, class in initialized only when it is required.
 		
 Applications of Singleton classes
-	1. Hardware interface access
+	1. Hardware interface access : 
 		The use of singleton depends on the requirements. Singleton classes are also used to prevent concurrent access of class. 
 		Practically singleton can be used in case external hardware resource usage limitation required e.g. Hardware printers where 
 		the print spooler can be made a singleton to avoid multiple concurrent accesses and creating deadlock.
     
-    2. Logger 
+    2. Logger :
     	Singleton classes are used in log file generations. Log files are created by logger class object. 
     	Suppose an application where the logging utility has to produce one log file based on the messages received 
     	from the users. If there is multiple client application using this logging utility class they might create multiple 
@@ -21,20 +21,20 @@ Applications of Singleton classes
     	We can use the logger utility class as a singleton and provide a global point of reference, so that each user can use this utility and 
     	no 2 users access it at same time.
     
-    3. Configuration File 
+    3. Configuration File : 
     	This is another potential candidate for Singleton pattern because this has a performance benefit as it prevents multiple users to repeatedly access and
     	 read the configuration file or properties file. It creates a single instance of the configuration file which can be accessed by 
     	 multiple calls concurrently as it will provide static config data loaded into in-memory objects. The application only reads from 
     	 the configuration file at the first time and there after from second call onwards the client applications read the data from in-memory objects.
     
-    4. Cache 
+    4. Cache :
     	We can use the cache as a singleton object as it can have a global point of reference and for all future calls to the cache object the client 
     	application will use the in-memory object.
 	
 	5. Thread pool.
 
 
-Singleton pattern implementation and design concerns with the implementation.
+Singleton pattern implementation and design concerns with the implementation:
 
     1. Eager initialization
     2. Static block initialization
@@ -44,9 +44,23 @@ Singleton pattern implementation and design concerns with the implementation.
     6. Using Reflection to destroy Singleton Pattern
     7. Enum Singleton
     7. Serialization and DeSerialization Singleton
+ 
+Refer https://www.geeksforgeeks.org/java-singleton-design-pattern-practices-examples/ to know Pros and Cons of above 
+implementation types
+
+When to use What
+
+    1.  Eager initialization is easy to implement but it may cause resource and CPU time wastage. 
+    	Use it only if cost of initializing a class is less in terms of resources or your program will always need the instance of class.
+    2.  By using Static block in Eager initialization we can provide exception handling and also can control over instance.
+    3.  Using synchronized we can create singleton class in multi-threading environment also but it can cause slow performance, 
+    	so we can use Double check locking mechanism.
+    4.  Bill Pugh implementation is most widely used approach for singleton classes. 
+    	Most developers prefer it because of its simplicity and advantages.
 
 
-Important points
+
+Important points :
 
     1. Singleton classes can have only one instance and that instance should be globally accessible.
     2. java.lang.Runtime and java.awt.Desktop are 2 singleton classes provided by JVM.
@@ -54,8 +68,12 @@ Important points
     4. Outer classes should be prevented to create instance of singleton class.
 	5. Singleton design pattern is also used in other design patterns like Abstract Factory, Builder, Prototype, Facade etc.
 
+Efficient way to implement a singleton pattern in Java?
+	Using enum singletom
+	Ref: https://stackoverflow.com/questions/70689/what-is-an-efficient-way-to-implement-a-singleton-pattern-in-java
 	
 Reference :
 	1. journaldev = https://www.journaldev.com/1377/java-singleton-design-pattern-best-practices-examples#bill-pugh-singleton
-	2. geeksforgeeks = https://www.geeksforgeeks.org/prevent-singleton-pattern-reflection-serialization-cloning/
+	2. geeksforgeeks = 	https://www.geeksforgeeks.org/prevent-singleton-pattern-reflection-serialization-cloning/
+						https://www.geeksforgeeks.org/java-singleton-design-pattern-practices-examples/
 	3. dezone = https://dzone.com/articles/java-singletons-using-enum

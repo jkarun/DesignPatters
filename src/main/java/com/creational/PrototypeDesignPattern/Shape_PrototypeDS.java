@@ -1,4 +1,4 @@
-package com.designpattern.PrototypeDesignPattern;
+package com.creational.PrototypeDesignPattern;
 
 public abstract class Shape_PrototypeDS implements Cloneable {
 	private String id;

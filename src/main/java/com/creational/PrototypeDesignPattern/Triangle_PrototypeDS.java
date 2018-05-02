@@ -1,4 +1,4 @@
-package com.designpattern.PrototypeDesignPattern;
+package com.creational.PrototypeDesignPattern;
 
 public class Triangle_PrototypeDS extends Shape_PrototypeDS{
 

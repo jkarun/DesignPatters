@@ -1,4 +1,4 @@
-package com.designpattern.factoryDesignPattern;
+package com.creational.factoryDesignPattern;
 
 public class Triabgle_factoryDP implements Shape_factoryDP{
 
