@@ -2,6 +2,10 @@ package com.creational.Singleton;
 
 import java.io.Serializable;
 
+/*
+ * Best approach to create singleton in multithread environment is use enum singleton concept
+ */
+
 public class SingletonClass implements Serializable, Cloneable {
 
 	/*
@@ -15,16 +19,22 @@ public class SingletonClass implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 866188711438551357L;
 
-	private static SingletonClass singletonClass;
+	private static volatile SingletonClass singletonClass;
 	private String msg = "Hello from SingleTonClass...";
 
 	private SingletonClass() {
 	}
 
-	// lazy initialization
-	public static synchronized SingletonClass getInstance() {
-		if (singletonClass == null) {
-			singletonClass = new SingletonClass();
+	// Double check lazy initialization which can be used for high performance
+	// Multi-threaded applications.
+	// Do not use 'synchronized' this method
+	public static SingletonClass getInstance() {
+		if (singletonClass == null) { // $1
+			synchronized (SingletonClass.class) {
+				if (singletonClass == null) { // $2
+					singletonClass = new SingletonClass();
+				}
+			}
 		}
 		return singletonClass;
 	}
@@ -49,3 +59,23 @@ public class SingletonClass implements Serializable, Cloneable {
 		return msg;
 	}
 }
+
+/*
+ * $1. If an instance was already created, don't do anything - avoid locking
+ * threads
+ * 
+ * $2. The first thread that has acquired the lock checks and sees that there is
+ * no such object and creates it. It releases the lock and the second one can do
+ * the same - it has to check if the object exists because the first one may
+ * have created it.
+ * 
+ * So basically the outer if is used to prevent redundant locks - it lets all
+ * thread know that there is already an object and they don't need to lock/do
+ * anything. And the inner if is used to let a concurrent thread know whether
+ * another has already created the object or not.
+ * 
+ * The Double checked pattern is used to avoid obtaining the lock every time the
+ * code is executed, if the call are not happening together then the first
+ * condition will fail and the code execution will not execute the locking thus
+ * saving resources.
+ */

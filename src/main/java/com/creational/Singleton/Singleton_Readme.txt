@@ -48,6 +48,10 @@ Singleton pattern implementation and design concerns with the implementation:
 Refer https://www.geeksforgeeks.org/java-singleton-design-pattern-practices-examples/ to know Pros and Cons of above 
 implementation types
 
+Efficient way to implement a singleton pattern in Java?
+	Using enum singletom
+	Ref: https://stackoverflow.com/questions/70689/what-is-an-efficient-way-to-implement-a-singleton-pattern-in-java
+	
 When to use What
 
     1.  Eager initialization is easy to implement but it may cause resource and CPU time wastage. 
@@ -58,8 +62,6 @@ When to use What
     4.  Bill Pugh implementation is most widely used approach for singleton classes. 
     	Most developers prefer it because of its simplicity and advantages.
 
-
-
 Important points :
 
     1. Singleton classes can have only one instance and that instance should be globally accessible.
@@ -68,10 +70,6 @@ Important points :
     4. Outer classes should be prevented to create instance of singleton class.
 	5. Singleton design pattern is also used in other design patterns like Abstract Factory, Builder, Prototype, Facade etc.
 
-Efficient way to implement a singleton pattern in Java?
-	Using enum singletom
-	Ref: https://stackoverflow.com/questions/70689/what-is-an-efficient-way-to-implement-a-singleton-pattern-in-java
-	
 Reference :
 	1. journaldev = https://www.journaldev.com/1377/java-singleton-design-pattern-best-practices-examples#bill-pugh-singleton
 	2. geeksforgeeks = 	https://www.geeksforgeeks.org/prevent-singleton-pattern-reflection-serialization-cloning/
